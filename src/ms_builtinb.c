@@ -6,7 +6,7 @@
 /*   By: bmontoya <bmontoya@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 16:34:42 by bmontoya          #+#    #+#             */
-/*   Updated: 2017/05/26 15:22:22 by bmontoya         ###   ########.fr       */
+/*   Updated: 2017/05/26 18:20:41 by bmontoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,16 @@
 
 void	ms_echo(char **args, t_list **my_environ)
 {
+	int	flag;
+
 	(void)my_environ;
+	if (*args && !ft_strcmp("-n", *args))
+	{
+		++args;
+		flag = 0;
+	}
+	else
+		flag = 1;
 	while (*args)
 	{
 		ft_printf("%s", *args);
@@ -25,7 +34,8 @@ void	ms_echo(char **args, t_list **my_environ)
 			ft_printf(" ");
 		++args;
 	}
-	ft_printf("\n");
+	if (flag)
+		ft_printf("\n");
 }
 
 void	ms_exit(char **args, t_list **my_environ)
